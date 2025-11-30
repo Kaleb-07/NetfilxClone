@@ -6,6 +6,7 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    {/* To Track App from App.jsx*/}
     <App />
   </StrictMode>,
 )
