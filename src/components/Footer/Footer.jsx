@@ -38,7 +38,7 @@ function Footer() {
           <p>Contact Us</p>
         </div>
       </div>
-
+      {/* hand write */}
       <div className="footer_copy">
         © 1997-2024 Netflix, Inc.
       </div>
