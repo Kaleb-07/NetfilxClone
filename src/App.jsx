@@ -4,6 +4,7 @@ function App() {
 
   return (
     <>
+      {/* To Track home from Home.jsx*/}
       <Home/>
     </>
   )
