@@ -9,6 +9,7 @@ function Header() {
     <div className='header_outer_container'>
       <div className='header_container'>
         <div className='header-left'>
+           {/* Right nav*/}
           <ul>
             <li><img src={Netflix_logo} alt="netflix logo"/></li>
             <li>Home</li>
@@ -20,6 +21,7 @@ function Header() {
           </ul>
         </div>
         <div className='header_right'>
+            {/* Left nav */}
           <ul>
             <li><SearchIcon/></li>
             <li><NotificationsIcon/></li>
