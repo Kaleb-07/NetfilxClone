@@ -20,7 +20,9 @@
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
-  padding-bottom: 20px;
+  padding: 10px 0;
+  gap: 1px;
+  padding-left: 20px;
 }
 
 .row__posters::-webkit-scrollbar {
@@ -42,7 +44,7 @@
 
 /* Large posters */
 .row__posterLarge {
-  max-height: 250px;
+  max-height: 260px;
 }
 
 .row__posterLarge:hover {
