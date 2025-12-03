@@ -1,31 +1,45 @@
+/* Dark background like Netflix */
 .row {
+  background-color: #111;
   color: white;
-  margin-left: 20px;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
+/* Title Style */
+.row__title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Scroll area */
 .row__posters {
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
-  padding: 20px;
+  padding-bottom: 20px;
 }
 
 .row__posters::-webkit-scrollbar {
   display: none;
 }
 
+/* Poster styles */
 .row__poster {
-  width: 100%;
-  object-fit: contain;
   max-height: 120px;
+  object-fit: contain;
   margin-right: 10px;
   transition: transform 450ms;
+  border-radius: 4px;
 }
 
 .row__poster:hover {
   transform: scale(1.08);
 }
 
+/* Large posters */
 .row__posterLarge {
   max-height: 250px;
 }
