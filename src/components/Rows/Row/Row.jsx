@@ -18,7 +18,7 @@ function Row({ title, fetchUrl, isLarge }) {
 
   const handleClick = (movie) => {
     if (trailerUrl) {
-      setTrailerUrl(""); // close if already open
+      setTrailerUrl("");
     } else {
       movieTrailer(movie?.name || movie?.title || "")
         .then((url) => {
@@ -32,14 +32,12 @@ function Row({ title, fetchUrl, isLarge }) {
   const opts = {
     height: "390",
     width: "100%",
-    playerVars: {
-      autoplay: 1,
-    },
+    playerVars: { autoplay: 1 },
   };
 
   return (
     <div className="row">
-      <h2>{title}</h2>
+      <h2 className="row__title">{title}</h2>
 
       <div className="row__posters">
         {movies.map((movie) => (
@@ -49,7 +47,7 @@ function Row({ title, fetchUrl, isLarge }) {
             src={`https://image.tmdb.org/t/p/w500${
               isLarge ? movie.poster_path : movie.backdrop_path
             }`}
-            alt={movie.name}
+            alt={movie?.name || movie?.title}
             onClick={() => handleClick(movie)}
           />
         ))}
