@@ -1,1 +1,1 @@
-# React + Vite
+# 🎬 Netflix Clone (React + Vite)
