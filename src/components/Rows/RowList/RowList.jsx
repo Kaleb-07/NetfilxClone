@@ -5,6 +5,7 @@ import requests from "../../../utils/requests";
 function RowList() {
   return (
     <>
+     {/* fetch the titles*/}
       <Row
         title="Netflix Originals"
         fetchUrl={requests.fetchNetflixOriginals}
