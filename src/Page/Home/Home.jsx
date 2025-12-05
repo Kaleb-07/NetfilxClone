@@ -7,6 +7,7 @@ import RowList from '../../components/Rows/RowList/RowList'
 const Home = () => {
   return (
     <div>
+       {/* To Track components */}
       <Header/>
       <Banner/>
       <RowList/>
