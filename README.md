@@ -11,14 +11,14 @@ This project showcases dynamic movie lists, YouTube trailers, hover animations, 
 ✔️ Play trailers via **YouTube**  
 ✔️ Axios custom instance for requests  
 ✔️ Banner section showcasing featured movie  
-✔️ Modern build with **Vite + React Hooks**  
+✔️ Modern build with **Vite + React Hooks**
 
 ## 🛠️ Tech Stack
 
   Tech-Usage
-  React:- UI & components  
+  React:- UI & components
   Vite:- Fast dev server + build tool  
-  Axios:- API requests  
-  TMDB API:- Movie data  
-  CSS:- Styling  
+  Axios:- API requests
+  TMDB API:- Movie data
+  CSS:- Styling
   Movie Trailer + YouTube Trailer popups  
