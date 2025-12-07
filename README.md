@@ -5,12 +5,12 @@ This project showcases dynamic movie lists, YouTube trailers, hover animations, 
 
 ## 🚀 Features
 
-✔️ Netflix-style UI with row-based movie categories  
-✔️ Responsive movie posters & hover effects  
+✔️ Netflix-style UI with row-based movie categories
+✔️ Responsive movie posters & hover effects
 ✔️ Fetch movie data using **TMDB API**  
-✔️ Play trailers via **YouTube**  
+✔️ Play trailers via **YouTube**
 ✔️ Axios custom instance for requests  
-✔️ Banner section showcasing featured movie  
+✔️ Banner section showcasing featured movie
 ✔️ Modern build with **Vite + React Hooks**
 
 ## 🛠️ Tech Stack
