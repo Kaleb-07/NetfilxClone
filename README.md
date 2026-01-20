@@ -11,7 +11,7 @@ This project showcases dynamic movie lists, YouTube trailers, hover animations, 
 ✔️ Play trailers via **YouTube**
 ✔️ Axios custom instance for requests  
 ✔️ Banner section showcasing featured movie
-✔️ Modern build with **Vite + React Hooks**
+
 
 ## 🛠️ Tech Stack
 
