@@ -15,8 +15,8 @@
 
 .modal__content {
     background-color: #181818;
-    width: 50%;
-    max-width: 1000px;
+    width: 60%;
+    max-width: 1100px;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
