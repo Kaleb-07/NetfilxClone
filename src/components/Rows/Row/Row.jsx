@@ -1,31 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "../../../utils/axios";
 import "./Row.css";
-import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import MovieModal from "./MovieModal";
 
-function Row({ title, fetchUrl, isLarge }) {
+function Row({ title, fetchUrl, isLarge, moviesData, myList, updateMyList }) {
   const [movies, setMovies] = useState([]);
-  const [trailerUrl, setTrailerUrl] = useState("");
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const rowRef = useRef(null);
 
   useEffect(() => {
+    if (moviesData) {
+      setMovies(moviesData);
+      return;
+    }
     async function fetchData() {
       const request = await axios.get(fetchUrl);
       setMovies(request.data.results);
     }
     fetchData();
-  }, [fetchUrl]);
+  }, [fetchUrl, moviesData]);
 
   const handleClick = (movie) => {
-    if (trailerUrl) {
-      setTrailerUrl("");
-    } else {
-      movieTrailer(movie?.name || movie?.title || "")
-        .then((url) => {
-          const urlParams = new URLSearchParams(new URL(url).search);
-          setTrailerUrl(urlParams.get("v"));
-        })
-        .catch((error) => console.log("Trailer not found:", error));
+    setSelectedMovie(movie);
+  };
+
+  const handleScroll = (direction) => {
+    if (rowRef.current) {
+      const { scrollLeft, clientWidth } = rowRef.current;
+      const scrollTo = direction === "left"
+        ? scrollLeft - clientWidth + 200
+        : scrollLeft + clientWidth - 200;
+
+      rowRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
 
@@ -39,21 +48,37 @@ function Row({ title, fetchUrl, isLarge }) {
     <div className="row">
       <h2 className="row__title">{title}</h2>
 
-      <div className="row__posters">
-        {movies.map((movie) => (
-          <img
-            key={movie.id}
-            className={`row__poster ${isLarge && "row__posterLarge"}`}
-            src={`https://image.tmdb.org/t/p/w500${
-              isLarge ? movie.poster_path : movie.backdrop_path
-            }`}
-            alt={movie?.name || movie?.title}
-            onClick={() => handleClick(movie)}
-          />
-        ))}
+      <div className="row__container">
+        <div className="row__arrow row__arrow--left" onClick={() => handleScroll("left")}>
+          <ArrowBackIosNewIcon />
+        </div>
+
+        <div className="row__posters" ref={rowRef}>
+          {movies.map((movie) => (
+            <img
+              key={movie.id}
+              className={`row__poster ${isLarge && "row__posterLarge"}`}
+              src={`https://image.tmdb.org/t/p/w500${isLarge ? movie.poster_path : movie.backdrop_path
+                }`}
+              alt={movie?.name || movie?.title}
+              onClick={() => handleClick(movie)}
+            />
+          ))}
+        </div>
+
+        <div className="row__arrow row__arrow--right" onClick={() => handleScroll("right")}>
+          <ArrowForwardIosIcon />
+        </div>
       </div>
 
-      {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+      {selectedMovie && (
+        <MovieModal
+          movie={selectedMovie}
+          setModalOpen={setSelectedMovie}
+          updateMyList={updateMyList}
+          myList={myList}
+        />
+      )}
     </div>
   );
 }

@@ -1,24 +1,26 @@
-   import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "../../utils/axios";
 import requests from "../../utils/requests";
 import "./Banner.css";
+import MovieModal from "../Rows/Row/MovieModal";
 
-function Banner() {
+function Banner({ myList, updateMyList }) {
   const [movie, setMovie] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(requests.fetchNetflixOriginals);
       setMovie(
         request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
+        Math.floor(Math.random() * request.data.results.length - 1)
         ]
       );
       return request;
     }
     fetchData();
   }, []);
-           {/* each truncated */}
+  {/* each truncated */ }
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
@@ -40,8 +42,8 @@ function Banner() {
         </h1>
 
         <div className="banner__buttons">
-          <button className="banner__button">Play</button>
-          <button className="banner__button">More Info</button>
+          <button className="banner__button" onClick={() => setModalOpen(true)}>Play</button>
+          <button className="banner__button" onClick={() => setModalOpen(true)}>More Info</button>
         </div>
 
         <h1 className="banner__description">
@@ -49,7 +51,14 @@ function Banner() {
         </h1>
       </div>
 
-      <div className="banner--fadeBottom" />
+      {modalOpen && (
+        <MovieModal
+          movie={movie}
+          setModalOpen={setModalOpen}
+          myList={myList}
+          updateMyList={updateMyList}
+        />
+      )}
     </header>
   );
 }
