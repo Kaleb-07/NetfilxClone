@@ -20,5 +20,5 @@ This project showcases dynamic movie lists, YouTube trailers, hover animations, 
   Vite:- Fast dev server + build tool  
   Axios:- API requests
   TMDB API:- Movie data
-  CSS:- Styling
+  CSS:-Styling using tailwind 
   Movie Trailer + YouTube Trailer popups  
