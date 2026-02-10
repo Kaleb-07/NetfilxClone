@@ -6,6 +6,8 @@ import RowList from '../../components/Rows/RowList/RowList'
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Home");
+  const [selectedGenre, setSelectedGenre] = useState(null);
   const [myList, setMyList] = useState([]);
 
   useEffect(() => {
@@ -20,14 +22,20 @@ const Home = () => {
 
   return (
     <div>
-      {/* To Track components */}
-      <Header setSearchQuery={setSearchQuery} />
+      <Header
+        setSearchQuery={setSearchQuery}
+        setSelectedCategory={setSelectedCategory}
+        setSelectedGenre={setSelectedGenre}
+        selectedCategory={selectedCategory}
+      />
       <Banner myList={myList} updateMyList={updateMyList} />
-      {searchQuery ? (
-        <RowList searchQuery={searchQuery} myList={myList} updateMyList={updateMyList} />
-      ) : (
-        <RowList myList={myList} updateMyList={updateMyList} />
-      )}
+      <RowList
+        searchQuery={searchQuery}
+        selectedCategory={selectedCategory}
+        selectedGenre={selectedGenre}
+        myList={myList}
+        updateMyList={updateMyList}
+      />
       <Footer />
     </div>
   )
