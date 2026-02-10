@@ -22,3 +22,5 @@ This project showcases dynamic movie lists, YouTube trailers, hover animations, 
   TMDB API:- Movie data
   CSS:- Styling
   Movie Trailer + YouTube Trailer popups  
+
+  <!-- when click the play the poster place automaticly change in to youtube video place....if we can not click the play display the poster -->
