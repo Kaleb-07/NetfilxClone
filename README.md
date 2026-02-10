@@ -20,7 +20,12 @@ This project showcases dynamic movie lists, YouTube trailers, hover animations, 
   Vite:- Fast dev server + build tool  
   Axios:- API requests
   TMDB API:- Movie data
+<<<<<<< HEAD
   CSS:- Styling
   Movie Trailer + YouTube Trailer popups  
 
   <!-- when click the play the poster place automaticly change in to youtube video place....if we can not click the play display the poster -->
+=======
+  CSS:-Styling using tailwind 
+  Movie Trailer + YouTube Trailer popups  
+>>>>>>> 07921752d527a3da9d95f680d7b53a5194906ec6
