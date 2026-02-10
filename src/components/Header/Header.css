@@ -144,6 +144,7 @@
 .header__searchIcon {
   cursor: pointer;
   font-size: 24px !important;
+  z-index: 10;
 }
 
 .header__kids {
@@ -165,8 +166,10 @@
 }
 
 .header__avatar {
+  width: 32px;
+  height: 32px;
   border-radius: 4px;
-  font-size: 32px !important;
+  object-fit: cover;
 }
 
 .header__dropdownArrow {
@@ -187,17 +190,25 @@
   width: 180px;
   padding: 10px 0;
   z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.header__profileContainer:hover .header__dropdown {
+  opacity: 1;
+  visibility: visible;
 }
 
 .header__dropdownCaret {
   position: absolute;
   top: -7px;
-  right: 15px;
+  right: 25px;
   width: 0;
   height: 0;
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
-  border-bottom: 7px solid white;
+  border-bottom: 7px solid rgba(255, 255, 255, 0.8);
 }
 
 .header__dropdownList,
@@ -215,18 +226,37 @@
 
 .header__dropdownItem,
 .header__dropdownSecondary li {
-  padding: 10px 15px;
+  padding: 8px 15px;
   font-size: 13px;
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
-.header__dropdownItem:hover,
+.header__dropdownAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.header__dropdownItem span:hover,
 .header__dropdownSecondary li:hover {
   text-decoration: underline;
 }
 
+.header__dropdownSecondary {
+  padding-top: 5px;
+}
+
 .header__dropdownSecondary li {
   font-weight: bold;
+  justify-content: center;
+}
+
+.header__dropdownSecondary li:last-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 5px;
+  padding-top: 15px;
+  font-weight: normal;
 }

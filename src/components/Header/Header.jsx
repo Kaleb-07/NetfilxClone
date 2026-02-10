@@ -13,6 +13,11 @@ function Header({ setSearchQuery, setSelectedCategory, setSelectedGenre, selecte
   const [profileDropdownActive, setProfileDropdownActive] = useState(false);
   const [movieDropdownActive, setMovieDropdownActive] = useState(false);
 
+  const profiles = [
+    { id: 1, name: "Kaleb", avatar: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" },
+    { id: 2, name: "Kids", avatar: "https://occ-0-3934-3933.1.nflxso.net/dnm/api/v6/K6ndS2WiUm2STUunY19fN-4X6ks/AAAABXy6-U9Y-nL5U0Lue9Z1PloS8W5g3_Y6Z-V7Z7-V7Z7-V7Z7-V7Z7-V7Z7-V7Z7-V7Z7.png?r=abc" },
+  ];
+
   const handleSearchChange = (e) => {
     const query = e.target.value;
     setLocalSearchQuery(query);
@@ -61,8 +66,9 @@ function Header({ setSearchQuery, setSelectedCategory, setSelectedGenre, selecte
               className={`header__navItem ${selectedCategory === "Movies" ? "active" : ""}`}
               onMouseEnter={() => setMovieDropdownActive(true)}
               onMouseLeave={() => setMovieDropdownActive(false)}
+              onClick={() => handleCategoryClick("Movies")}
             >
-              <span onClick={() => handleCategoryClick("Movies")}>Movies</span>
+              <span>Movies</span>
               <ArrowDropDownIcon className="header__navArrow" />
               {movieDropdownActive && (
                 <div className="header__movieDropdown">
@@ -78,7 +84,7 @@ function Header({ setSearchQuery, setSelectedCategory, setSelectedGenre, selecte
               )}
             </li>
             <li className={selectedCategory === "New & Popular" ? "active" : ""} onClick={() => handleCategoryClick("New & Popular")}>New & Popular</li>
-            <li>My List</li>
+            <li className={selectedCategory === "My List" ? "active" : ""} onClick={() => handleCategoryClick("My List")}>My List</li>
             <li>Browse by Languages</li>
           </ul>
         </div>
@@ -101,30 +107,36 @@ function Header({ setSearchQuery, setSelectedCategory, setSelectedGenre, selecte
             onMouseEnter={() => setProfileDropdownActive(true)}
             onMouseLeave={() => setProfileDropdownActive(false)}
           >
-            <AccountBoxIcon className="header__avatar" />
+            <img
+              className="header__avatar"
+              src={profiles[0].avatar}
+              alt="avatar"
+              onError={(e) => { e.target.src = "https://occ-0-3934-3933.1.nflxso.net/dnm/api/v6/K6ndS2WiUm2STUunY19fN-4X6ks/AAAABdzOf6PCHv_tY82I9_YV_P-An77U0I1XQ-tO1Z7J8i7L9_Z7-V7Z7-V7Z7-V7Z7-V7Z7-V7Z7.png?r=a11" }}
+            />
             <ArrowDropDownIcon className={`header__dropdownArrow ${profileDropdownActive && "active"}`} />
 
-            {profileDropdownActive && (
-              <div className="header__dropdown">
-                <span className="header__dropdownCaret"></span>
-                <ul className="header__dropdownList">
-                  <li className="header__dropdownItem">
-                    <AccountBoxIcon /> <span>User 1</span>
+            <div className="header__dropdown">
+              <span className="header__dropdownCaret"></span>
+              <ul className="header__dropdownList">
+                {profiles.map(profile => (
+                  <li key={profile.id} className="header__dropdownItem">
+                    <img src={profile.avatar} alt={profile.name} className="header__dropdownAvatar" />
+                    <span>{profile.name}</span>
                   </li>
-                  <li className="header__dropdownItem">
-                    <AccountBoxIcon /> <span>User 2</span>
-                  </li>
-                  <li className="header__dropdownItem">
-                    <span>Manage Profiles</span>
-                  </li>
-                </ul>
-                <ul className="header__dropdownSecondary">
-                  <li>Account</li>
-                  <li>Help Center</li>
-                  <li>Sign out of Netflix</li>
-                </ul>
-              </div>
-            )}
+                ))}
+                <li className="header__dropdownItem">
+                  <span>Manage Profiles</span>
+                </li>
+                <li className="header__dropdownItem">
+                  <span>Transfer Profile</span>
+                </li>
+              </ul>
+              <ul className="header__dropdownSecondary">
+                <li>Account</li>
+                <li>Help Center</li>
+                <li>Sign out of Netflix</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

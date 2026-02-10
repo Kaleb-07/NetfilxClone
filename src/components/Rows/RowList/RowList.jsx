@@ -60,6 +60,20 @@ function RowList({ searchQuery, selectedCategory, selectedGenre, myList, updateM
           </>
         );
 
+      case "My List":
+        return (
+          <div style={{ paddingTop: '80px', minHeight: '80vh' }}>
+            {myList && myList.length > 0 ? (
+              <Row title="My List" moviesData={myList} myList={myList} updateMyList={updateMyList} isLarge />
+            ) : (
+              <div style={{ color: 'white', textAlign: 'center', marginTop: '100px' }}>
+                <h2>Your list is empty.</h2>
+                <p>Add some movies or TV shows to see them here.</p>
+              </div>
+            )}
+          </div>
+        );
+
       default: // Home
         return (
           <>
