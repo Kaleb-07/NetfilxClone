@@ -30,7 +30,11 @@ const SignUpPage = () => {
             localStorage.setItem('registeredEmails', JSON.stringify(registeredEmails));
         }
 
-        registeredUsers[formData.email.toLowerCase()] = formData.username;
+        // Store full user data
+        registeredUsers[formData.email.toLowerCase()] = {
+            username: formData.username,
+            password: formData.password
+        };
         localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
 
         // Set as current user
@@ -48,13 +52,14 @@ const SignUpPage = () => {
         <div className="signup-page">
             <header className="signup-header">
                 <img src={Netflix_logo} alt="Netflix Logo" onClick={() => navigate('/')} />
-                <button className="signup-header__signin" onClick={() => navigate('/home')}>Sign In</button>
+                <button className="signup-header__signin" onClick={() => navigate('/login')}>Sign In</button>
             </header>
 
             <div className="signup-container">
                 <div className="signup-box">
-                    <h1>Welcome back! Joining Netflix is easy.</h1>
-                    <p>Enter your details and you'll be watching in no time.</p>
+                    <p className="step-indicator">STEP <b>1</b> OF <b>3</b></p>
+                    <h1>Create a password to start your membership</h1>
+                    <p>Just a few more steps and you're done! We hate paperwork, too.</p>
 
                     <form onSubmit={handleSubmit} className="signup-form">
                         <div className="input-group">

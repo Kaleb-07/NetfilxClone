@@ -31,17 +31,19 @@ const ReasonsToJoin = () => {
 
     return (
         <div className="reasons-section">
-            <h2>More Reasons to Join</h2>
-            <div className="reasons-grid">
-                {reasons.map((reason, index) => (
-                    <div key={index} className="reason-card">
-                        <h3>{reason.title}</h3>
-                        <p>{reason.description}</p>
-                        <div className="reason-icon">
-                            {reason.icon}
+            <div className="reasons-container">
+                <h2>More Reasons to Join</h2>
+                <div className="reasons-grid">
+                    {reasons.map((reason, index) => (
+                        <div key={index} className="reason-card">
+                            <h3>{reason.title}</h3>
+                            <p>{reason.description}</p>
+                            <div className="reason-icon">
+                                {reason.icon}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
     );

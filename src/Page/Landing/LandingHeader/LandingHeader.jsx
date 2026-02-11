@@ -12,7 +12,7 @@ const LandingHeader = () => {
                 <img src={Netflix_logo} alt="Netflix Logo" />
             </div>
             <div className="landing-header__actions">
-                <button className="signin-button" onClick={() => navigate('/home')}>Sign In</button>
+                <button className="signin-button" onClick={() => navigate('/login')}>Sign In</button>
             </div>
         </header>
     );

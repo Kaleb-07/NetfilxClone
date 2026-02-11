@@ -3,6 +3,7 @@ import './App.css'
 import Home from './Page/Home/Home'
 import LandingPage from './Page/Landing/LandingPage'
 import SignUpPage from './Page/Landing/SignUp/SignUpPage'
+import LoginPage from './Page/Landing/Login/LoginPage'
 import ManageProfiles from './Page/Account/ManageProfiles/ManageProfiles'
 import AccountPage from './Page/Account/Settings/AccountPage'
 import TransferProfile from './Page/Account/Transfer/TransferProfile'
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/manage-profiles" element={<ManageProfiles />} />
         <Route path="/account" element={<AccountPage />} />

@@ -49,11 +49,20 @@
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 15px;
+    color: #333;
+}
+
+.step-indicator {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: #333;
 }
 
 .signup-box p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
+    font-size: 1.15rem;
+    margin-bottom: 25px;
+    color: #333;
 }
 
 .signup-form {
@@ -64,11 +73,17 @@
 
 .input-group input {
     width: 100%;
-    padding: 16px;
+    padding: 18px 12px;
     font-size: 1rem;
     border: 1px solid #8c8c8c;
-    border-radius: 4px;
+    border-radius: 2px;
     box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    outline: 2px solid #0071eb;
+    outline-offset: -2px;
 }
 
 .signup-submit {
@@ -90,7 +105,7 @@
 
 .signup-footer {
     background-color: #f3f3f3;
-    padding: 30px 3%;
+    padding: 30px 10%;
     border-top: 1px solid #e6e6e6;
     color: #737373;
 }
@@ -102,11 +117,12 @@
 
 .footer-content p {
     margin-bottom: 20px;
+    font-size: 1rem;
 }
 
 .footer-content ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
     list-style: none;
     padding: 0;
@@ -115,6 +131,7 @@
 
 .footer-content li {
     cursor: pointer;
+    color: #737373;
 }
 
 .footer-content li:hover {
