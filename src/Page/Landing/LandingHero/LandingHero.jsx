@@ -9,8 +9,23 @@ const LandingHero = () => {
 
     const handleGetStarted = (e) => {
         e.preventDefault();
-        // For now, just navigate to home
-        navigate('/home');
+
+        const registeredEmails = JSON.parse(localStorage.getItem('registeredEmails')) || [];
+        const isRegistered = registeredEmails.includes(email.toLowerCase());
+
+        // If email is already registered, go to home
+        if (isRegistered) {
+            navigate('/home');
+        }
+        // Mock logic: If email includes 'new', go to signup
+        else if (email.toLowerCase().includes('new')) {
+            navigate('/signup', { state: { email } });
+        }
+        // Default to signup for anything else that feels like a new user 
+        // but for now let's stick to the user's "new" keyword or just go to signup if not found
+        else {
+            navigate('/signup', { state: { email } });
+        }
     };
 
     return (
@@ -19,7 +34,7 @@ const LandingHero = () => {
             <div className="landing-hero__background">
                 <div className="landing-hero__overlay"></div>
                 <img
-                    src="https://assets.nflxext.com/ffe/siteui/vlv3/729ce5c0-6d57-4f31-81d5-aa6af8393b33/05df4f89-8d69-45e3-8580-0a2a7cc3d685/US-en-20241209-TRIFECTA-perspective_2674e2a8-175f-42a9-9831-4822606ed057_large.jpg"
+                    src="https://images.unsplash.com/photo-1574267433382-35d71c35a643?q=80&w=2600&auto=format&fit=crop"
                     alt="Background"
                     className="hero-bg-img"
                 />

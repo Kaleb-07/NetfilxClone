@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './FAQSection.css';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
@@ -33,8 +34,24 @@ const FAQSection = () => {
         }
     ];
 
+    const [email, setEmail] = useState('');
+    const navigate = useNavigate();
+
     const toggleAccordion = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
+    };
+
+    const handleGetStarted = (e) => {
+        e.preventDefault();
+
+        const registeredEmails = JSON.parse(localStorage.getItem('registeredEmails')) || [];
+        const isRegistered = registeredEmails.includes(email.toLowerCase());
+
+        if (isRegistered) {
+            navigate('/home');
+        } else {
+            navigate('/signup', { state: { email } });
+        }
     };
 
     return (
@@ -55,8 +72,14 @@ const FAQSection = () => {
             </div>
             <div className="faq-cta">
                 <p>Ready to watch? Enter your email to create or restart your membership.</p>
-                <form className="hero-form">
-                    <input type="email" placeholder="Email address" required />
+                <form className="hero-form" onSubmit={handleGetStarted}>
+                    <input
+                        type="email"
+                        placeholder="Email address"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
                     <button type="submit">
                         Get Started
                         <span className="button-arrow">›</span>
