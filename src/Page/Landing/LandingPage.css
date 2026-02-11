@@ -3,4 +3,29 @@
     color: #fff;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.curve-container {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    margin-top: -65px;
+    /* Overlap with hero */
+    z-index: 5;
+    background: transparent;
+    overflow: hidden;
+}
+
+.default-ltr-iqcdef-cache-1f97ztc {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140%;
+    height: 100%;
+    background: #000;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    border-top: 4px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.8);
 }
