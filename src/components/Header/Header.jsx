@@ -7,7 +7,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-function Header({ setSearchQuery, setSelectedCategory, setSelectedGenre, selectedCategory }) {
+function Header({ setSearchQuery, setSelectedCategory, setSelectedGenre, selectedCategory, onProfileSwitch }) {
   const [show, setShow] = useState(false);
   const [localSearchQuery, setLocalSearchQuery] = useState("");
   const [searchActive, setSearchActive] = useState(false);
@@ -17,17 +17,59 @@ function Header({ setSearchQuery, setSelectedCategory, setSelectedGenre, selecte
 
   const [currentUser, setCurrentUser] = useState(() => {
     const savedUser = localStorage.getItem('currentUser');
-    return savedUser ? JSON.parse(savedUser) : { username: "User" };
+    return savedUser ? JSON.parse(savedUser) : { username: "User", email: "guest", profileId: 1 };
   });
 
-  const profiles = [
-    { id: 1, name: currentUser.username, avatar: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" },
-    { id: 2, name: "Kids", avatar: "https://occ-0-3934-3933.1.nflxso.net/dnm/api/v6/K6ndS2WiUm2STUunY19fN-4X6ks/AAAABXy6-U9Y-nL5U0Lue9Z1PloS8W5g3_Y6Z-V7Z7-V7Z7-V7Z7-V7Z7-V7Z7-V7Z7-V7Z7.png?r=abc" },
-  ];
+  const [profiles, setProfiles] = useState(() => {
+    const savedProfiles = localStorage.getItem(`profiles_${currentUser.email}`);
+    if (savedProfiles) return JSON.parse(savedProfiles);
+
+    return [
+      { id: 1, name: currentUser.username, avatar: "https://api.dicebear.com/7.x/adventurer/svg?seed=Felix" },
+      { id: 2, name: "Kids", avatar: "https://api.dicebear.com/7.x/adventurer/svg?seed=Milo" },
+    ];
+  });
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem('currentUser');
+    if (savedUser) {
+      const user = JSON.parse(savedUser);
+      setCurrentUser(user);
+
+      const savedProfiles = localStorage.getItem(`profiles_${user.email}`);
+      if (savedProfiles) {
+        setProfiles(JSON.parse(savedProfiles));
+      }
+    }
+  }, []);
 
   const handleSignOut = () => {
     localStorage.removeItem('currentUser');
     navigate('/');
+  };
+
+  const handleProfileSwitch = (selectedProfile) => {
+    if (selectedProfile.id === profiles[0].id) return;
+
+    const otherProfiles = profiles.filter(p => p.id !== selectedProfile.id);
+    const newProfiles = [selectedProfile, ...otherProfiles];
+
+    const updatedUser = {
+      username: selectedProfile.name,
+      email: currentUser.email,
+      profileId: selectedProfile.id
+    };
+
+    localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+    localStorage.setItem(`profiles_${currentUser.email}`, JSON.stringify(newProfiles));
+
+    setCurrentUser(updatedUser);
+    setProfiles(newProfiles);
+    setProfileDropdownActive(false);
+
+    if (onProfileSwitch) {
+      onProfileSwitch(selectedProfile.id);
+    }
   };
 
   const handleMenuClick = (item) => {
@@ -140,19 +182,24 @@ function Header({ setSearchQuery, setSelectedCategory, setSelectedGenre, selecte
           >
             <img
               className="header__avatar"
-              src={profiles[0].avatar}
+              src={profiles[0]?.avatar || "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"}
               alt="avatar"
-              onError={(e) => { e.target.src = "https://occ-0-3934-3933.1.nflxso.net/dnm/api/v6/K6ndS2WiUm2STUunY19fN-4X6ks/AAAABdzOf6PCHv_tY82I9_YV_P-An77U0I1XQ-tO1Z7J8i7L9_Z7-V7Z7-V7Z7-V7Z7-V7Z7-V7Z7.png?r=a11" }}
+              onError={(e) => { e.target.src = "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" }}
             />
             <ArrowDropDownIcon className={`header__dropdownArrow ${profileDropdownActive && "active"}`} />
 
             <div className="header__dropdown">
               <span className="header__dropdownCaret"></span>
               <ul className="header__dropdownList">
-                {profiles.map(profile => (
-                  <li key={profile.id} className="header__dropdownItem">
+                {profiles.map((profile, index) => (
+                  <li
+                    key={profile.id}
+                    className="header__dropdownItem"
+                    onClick={() => index !== 0 && handleProfileSwitch(profile)}
+                    style={{ cursor: index === 0 ? 'default' : 'pointer' }}
+                  >
                     <img src={profile.avatar} alt={profile.name} className="header__dropdownAvatar" />
-                    <span>{profile.name}</span>
+                    <span style={{ fontWeight: index === 0 ? '700' : '400' }}>{profile.name}</span>
                   </li>
                 ))}
                 <li className="header__dropdownItem" onClick={() => handleMenuClick('Manage Profiles')}>

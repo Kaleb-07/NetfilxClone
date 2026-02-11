@@ -7,8 +7,15 @@ const AccountPage = () => {
     const navigate = useNavigate();
     const [currentUser] = useState(() => {
         const savedUser = localStorage.getItem('currentUser');
-        return savedUser ? JSON.parse(savedUser) : { username: "User", email: "user@example.com" };
+        return savedUser ? JSON.parse(savedUser) : { username: "User", email: "guest" };
     });
+
+    const [profiles] = useState(() => {
+        const savedProfiles = localStorage.getItem(`profiles_${currentUser.email}`);
+        return savedProfiles ? JSON.parse(savedProfiles) : [];
+    });
+
+    const currentAvatar = profiles[0]?.avatar || "https://api.dicebear.com/7.x/adventurer/svg?seed=Felix";
 
     return (
         <div className="account-page">
@@ -20,7 +27,13 @@ const AccountPage = () => {
                     onClick={() => navigate('/home')}
                 />
                 <div className="account-nav-right">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Avatar" className="nav-avatar" onClick={() => navigate('/home')} />
+                    <img
+                        src={currentAvatar}
+                        alt="Avatar"
+                        className="nav-avatar"
+                        onClick={() => navigate('/home')}
+                        onError={(e) => { e.target.src = "https://api.dicebear.com/7.x/adventurer/svg?seed=Felix" }}
+                    />
                 </div>
             </div>
 

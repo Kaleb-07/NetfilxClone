@@ -8,16 +8,29 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Home");
   const [selectedGenre, setSelectedGenre] = useState(null);
+
+  const [currentUser] = useState(() => {
+    const savedUser = localStorage.getItem('currentUser');
+    return savedUser ? JSON.parse(savedUser) : { email: "guest", profileId: 1 };
+  });
+
+  const [activeProfileId, setActiveProfileId] = useState(currentUser.profileId || 1);
   const [myList, setMyList] = useState([]);
 
   useEffect(() => {
-    const savedList = JSON.parse(localStorage.getItem("myList") || "[]");
+    const listKey = `myList_${currentUser.email}_${activeProfileId}`;
+    const savedList = JSON.parse(localStorage.getItem(listKey) || "[]");
     setMyList(savedList);
-  }, []);
+  }, [activeProfileId, currentUser.email]);
 
   const updateMyList = (newList) => {
     setMyList(newList);
-    localStorage.setItem("myList", JSON.stringify(newList));
+    const listKey = `myList_${currentUser.email}_${activeProfileId}`;
+    localStorage.setItem(listKey, JSON.stringify(newList));
+  };
+
+  const handleProfileSwitch = (profileId) => {
+    setActiveProfileId(profileId);
   };
 
   return (
@@ -27,6 +40,7 @@ const Home = () => {
         setSelectedCategory={setSelectedCategory}
         setSelectedGenre={setSelectedGenre}
         selectedCategory={selectedCategory}
+        onProfileSwitch={handleProfileSwitch}
       />
       <Banner myList={myList} updateMyList={updateMyList} />
       <RowList
