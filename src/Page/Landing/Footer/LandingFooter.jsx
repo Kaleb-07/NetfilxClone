@@ -1,21 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import LanguageIcon from '@mui/icons-material/Language';
 import './LandingFooter.css';
 
 const LandingFooter = () => {
     return (
         <footer className="landing-footer">
             <div className="landing-footer__container">
-                <p className="footer-top">Questions? Call 1-844-505-2993</p>
+                <p className="footer-top">
+                    Questions? Call <a href="tel:1-844-505-2993">1-844-505-2993</a>
+                </p>
                 <div className="footer-links">
                     <ul>
-                        <li><a href="#">FAQ</a></li>
+                        <li><Link to="/">FAQ</Link></li>
                         <li><a href="#">Investor Relations</a></li>
                         <li><a href="#">Buy Gift Cards</a></li>
                         <li><a href="#">Cookie Preferences</a></li>
                         <li><a href="#">Legal Notices</a></li>
                     </ul>
                     <ul>
-                        <li><a href="#">Help Center</a></li>
+                        <li><Link to="/help">Help Center</Link></li>
                         <li><a href="#">Jobs</a></li>
                         <li><a href="#">Ways to Watch</a></li>
                         <li><a href="#">Corporate Information</a></li>
@@ -36,10 +40,13 @@ const LandingFooter = () => {
                     </ul>
                 </div>
                 <div className="footer-lang">
-                    <select>
-                        <option>English</option>
-                        <option>Español</option>
-                    </select>
+                    <div className="lang-selector">
+                        <LanguageIcon className="globe-icon" />
+                        <select>
+                            <option>English</option>
+                            <option>Español</option>
+                        </select>
+                    </div>
                 </div>
                 <p className="footer-bottom">Netflix United States</p>
             </div>
