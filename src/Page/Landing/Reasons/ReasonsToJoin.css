@@ -1,13 +1,16 @@
 .reasons-section {
-    padding: 2rem 4%;
+    padding: 1rem 4%;
+    /* Reduced top padding */
     background-color: #000;
 }
 
 .reasons-section h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.75rem;
+    /* Increased to match Trending title */
+    font-weight: 700;
     margin-bottom: 1.5rem;
     color: #fff;
+    padding-left: 10px;
 }
 
 .reasons-grid {

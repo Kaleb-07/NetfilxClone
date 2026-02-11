@@ -26,8 +26,8 @@
     display: flex;
     overflow-y: hidden;
     overflow-x: scroll;
-    padding: 10px 0 60px 40px;
-    /* Reduced top padding from 30px */
+    padding: 10px 0 30px 40px;
+    /* Reduced bottom padding from 60px */
     /* Space for large rankings */
     gap: 30px;
     /* Decreased gap from 45px */

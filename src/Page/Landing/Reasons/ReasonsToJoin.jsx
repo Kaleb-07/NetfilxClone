@@ -10,22 +10,22 @@ const ReasonsToJoin = () => {
         {
             title: "Enjoy on your TV",
             description: "Watch on Smart TVs, Playstation, Xbox, Apple TV, Chromecast, Blu-ray players, and more.",
-            icon: <TvIcon style={{ fontSize: 40, color: '#fff' }} />
+            icon: <TvIcon style={{ fontSize: 40, color: 'rgb(229, 9, 20)' }} />
         },
         {
             title: "Download your shows to watch offline",
             description: "Save your favorites easily and always have something to watch.",
-            icon: <DownloadIcon style={{ fontSize: 40, color: '#fff' }} />
+            icon: <DownloadIcon style={{ fontSize: 40, color: 'rgb(229, 9, 20)' }} />
         },
         {
             title: "Watch everywhere",
             description: "Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.",
-            icon: <DevicesIcon style={{ fontSize: 40, color: '#fff' }} />
+            icon: <DevicesIcon style={{ fontSize: 40, color: 'rgb(229, 9, 20)' }} />
         },
         {
             title: "Create profiles for kids",
             description: "Send kids on adventures with their favorite characters in a space made just for them—free with your membership.",
-            icon: <ChildCareIcon style={{ fontSize: 40, color: '#fff' }} />
+            icon: <ChildCareIcon style={{ fontSize: 40, color: 'rgb(229, 9, 20)' }} />
         }
     ];
 
