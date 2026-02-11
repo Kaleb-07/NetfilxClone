@@ -183,6 +183,14 @@
 .quick-links-list a {
     color: #0073bb;
     text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.quick-links-list a:hover {
+    color: #e50914;
+    transform: translateX(5px);
+    text-decoration: underline;
 }
 
 .back-to-home {
