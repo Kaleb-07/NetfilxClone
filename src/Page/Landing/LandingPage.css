@@ -14,7 +14,6 @@
     /* Overlap with hero */
     z-index: 5;
     background: transparent;
-    overflow: hidden;
 }
 
 .default-ltr-iqcdef-cache-1f97ztc {
@@ -24,8 +23,21 @@
     transform: translateX(-50%);
     width: 140%;
     height: 100%;
-    background: #000;
     border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-    border-top: 4px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.8);
+    border-top: 4px solid rgb(229, 9, 20);
+    /* Exact Netflix Red */
+    /* Blue radial gradient with more transparency for better blur visibility */
+    background: radial-gradient(50% 500% at 50% -420%, rgba(64, 97, 231, 0.3) 70%, rgba(0, 0, 0, 0.05) 100%), rgba(0, 0, 0, 0.4);
+
+    /* Stronger backdrop blur */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    /* Flexbox for potential content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Ensure child content (if any) doesn't block the blur */
+    z-index: 1;
 }
