@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Header from '../../../components/Header/Header';
 import './AccountPage.css';
 
 const AccountPage = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [currentUser, setCurrentUser] = useState(() => {
         const savedUser = localStorage.getItem('currentUser');
         return savedUser ? JSON.parse(savedUser) : { username: "User", email: "guest", phone: "+1 555-0123" };
@@ -38,6 +39,21 @@ const AccountPage = () => {
             value: currentValue || ""
         });
     };
+
+    // Deep Linking Effect
+    useEffect(() => {
+        if (location.state?.edit) {
+            const target = location.state.edit;
+            let currentValue = "";
+            if (target === "Email") currentValue = currentUser.email;
+            if (target === "Phone") currentValue = currentUser.phone;
+
+            openEditModal(target, currentValue);
+
+            // Clear state so it doesn't reopen on refresh
+            window.history.replaceState({}, document.title);
+        }
+    }, [location.state, currentUser.email, currentUser.phone]);
 
     const handleSave = () => {
         const { target, value } = modal;

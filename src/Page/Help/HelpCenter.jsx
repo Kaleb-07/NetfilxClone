@@ -6,6 +6,41 @@ import './HelpCenter.css';
 
 const HelpCenter = () => {
     const navigate = useNavigate();
+    const [searchTerm, setSearchTerm] = React.useState("");
+    const [modal, setModal] = React.useState({ show: false, title: "", message: "" });
+
+    const trendingTopics = [
+        { title: "How to sign up for Netflix", video: "https://www.youtube.com/watch?v=shM9_qYQ1y0&t=4s" },
+        { title: "Plans and Pricing", video: "https://www.youtube.com/watch?v=Fq2CVMfXoY4" },
+        { title: "Can't sign in to Netflix", video: "https://www.youtube.com/watch?v=shM9_qYQ1y0" },
+        { title: "How to watch Netflix on your TV", video: "https://www.youtube.com/watch?v=O73Yn_lsh8I" }
+    ];
+
+    const quickLinks = [
+        { title: "Reset Password", path: "/account", edit: "Password" },
+        { title: "Update Email", path: "/account", edit: "Email" },
+        { title: "Get Help Signing In", path: "/" },
+        { title: "Update Payment Method", path: "/account", edit: "Phone" } // For demo, let's map payment help to phone/plan
+    ];
+
+    const filteredTrending = trendingTopics.filter(t =>
+        t.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    const filteredQuickLinks = quickLinks.filter(q =>
+        q.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    const handleLinkClick = (e, link) => {
+        e.preventDefault();
+        if (link.video) {
+            window.open(link.video, '_blank');
+        } else if (link.path) {
+            navigate(link.path, { state: { edit: link.edit } });
+        } else {
+            setModal({ show: true, title: "Coming Soon", message: "This help article is currently being prepared to provide you with the best support experience." });
+        }
+    };
 
     return (
         <div className="help-center">
@@ -31,7 +66,12 @@ const HelpCenter = () => {
                     <h1>How can we help?</h1>
                     <div className="help-search-bar">
                         <SearchIcon className="search-icon-help" />
-                        <input type="text" placeholder="What do you need help with?" />
+                        <input
+                            type="text"
+                            placeholder="What do you need help with?"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
                     </div>
                 </div>
             </div>
@@ -44,33 +84,31 @@ const HelpCenter = () => {
                             <h2>Trending Topics</h2>
                         </div>
                         <ul className="help-links">
-                            <li><a href="#">How to sign up for Netflix</a></li>
-                            <li><a href="#">Plans and Pricing</a></li>
-                            <li><a href="#">Can't sign in to Netflix</a></li>
-                            <li><a href="#">How to watch Netflix on your TV</a></li>
+                            {filteredTrending.length > 0 ? filteredTrending.map((topic, index) => (
+                                <li key={index}><a href="#" onClick={(e) => handleLinkClick(e, topic)}>{topic.title}</a></li>
+                            )) : <p className="no-results">No trending topics found.</p>}
                         </ul>
                     </section>
 
                     <div className="help-grid">
-                        <div className="help-card">
+                        <div className="help-card" onClick={() => setModal({ show: true, title: "Getting Started", message: "Comprehensive guide for new users is coming soon!" })}>
                             <h3>Getting Started</h3>
                             <p>Everything you need to know to start watching.</p>
                         </div>
-                        <div className="help-card">
+                        <div className="help-card" onClick={() => navigate('/account')}>
                             <h3>Manage My Account</h3>
                             <p>How to change your email, password, or plan.</p>
                         </div>
-                        <div className="help-card">
+                        <div className="help-card" onClick={() => setModal({ show: true, title: "Watching Netflix", message: "Troubleshooting guides are in the works!" })}>
                             <h3>Watching Netflix</h3>
                             <p>Troubleshoot issues with video quality or devices.</p>
                         </div>
                         <div className="help-card">
                             <h3>Quick Links</h3>
                             <ul className="quick-links-list">
-                                <li><a href="#">Reset Password</a></li>
-                                <li><a href="#">Update Email</a></li>
-                                <li><a href="#">Get Help Signing In</a></li>
-                                <li><a href="#">Update Payment Method</a></li>
+                                {filteredQuickLinks.length > 0 ? filteredQuickLinks.map((link, index) => (
+                                    <li key={index}><a href="#" onClick={(e) => handleLinkClick(e, link)}>{link.title}</a></li>
+                                )) : <li className="no-results">No quick links found.</li>}
                             </ul>
                         </div>
                     </div>
@@ -83,13 +121,23 @@ const HelpCenter = () => {
                 <div className="help-container">
                     <p>Questions? Call 1-844-505-2993</p>
                     <div className="footer-links-help">
-                        <a href="#">Terms of Use</a>
-                        <a href="#">Privacy</a>
-                        <a href="#">Cookie Preferences</a>
-                        <a href="#">Corporate Information</a>
+                        <a href="#" onClick={(e) => e.preventDefault()}>Terms of Use</a>
+                        <a href="#" onClick={(e) => e.preventDefault()}>Privacy</a>
+                        <a href="#" onClick={(e) => e.preventDefault()}>Cookie Preferences</a>
+                        <a href="#" onClick={(e) => e.preventDefault()}>Corporate Information</a>
                     </div>
                 </div>
             </footer>
+
+            {modal.show && (
+                <div className="modal-overlay">
+                    <div className="modern-modal help-modal">
+                        <h2>{modal.title}</h2>
+                        <p>{modal.message}</p>
+                        <button className="modal-close-btn" onClick={() => setModal({ show: false, title: "", message: "" })}>Got it</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

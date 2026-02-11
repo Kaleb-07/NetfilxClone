@@ -216,6 +216,70 @@
     font-size: 0.9rem;
 }
 
+.footer-links-help a:hover {
+    text-decoration: underline;
+}
+
+.help-card {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.help-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.help-links a {
+    transition: color 0.2s ease;
+}
+
+.help-links a:hover {
+    color: #e50914 !important;
+}
+
+.no-results {
+    color: #999;
+    font-style: italic;
+    grid-column: span 2;
+    padding: 10px 0;
+}
+
+/* Help Center Modal Styling */
+.help-modal {
+    background-color: #fff;
+    color: #333;
+    animation: helpPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-width: 450px;
+}
+
+.help-modal h2 {
+    color: #000;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    padding: 0;
+    border: none;
+}
+
+.help-modal p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+@keyframes helpPop {
+    from {
+        transform: scale(0.8) translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
 @media (max-width: 800px) {
     .help-links {
         grid-template-columns: 1fr;
