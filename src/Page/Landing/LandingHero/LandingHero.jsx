@@ -42,13 +42,13 @@ const LandingHero = () => {
             <div className="landing-hero__background">
                 <div className="landing-hero__overlay"></div>
                 <img
-                    src="https://images.unsplash.com/photo-1574267433382-35d71c35a643?q=80&w=2600&auto=format&fit=crop"
+                    src="https://thurrott-assets.nyc3.digitaloceanspaces.com/web/wp-content/uploads/sites/2/2022/01/14172326/netflix.jpg"
                     alt="Background"
                     className="hero-bg-img"
                 />
             </div>
             <div className="landing-hero__content">
-                <h1>Unlimited movies, TV shows, and more</h1>
+                <h1>Unlimited movies, TV <br /> shows, and more</h1>
                 <p className="hero-subtitle">Starts at US$6.99. Cancel anytime.</p>
                 <p className="hero-cta">Ready to watch? Enter your email to create or restart your membership.</p>
                 <form className="hero-form" onSubmit={handleGetStarted}>
