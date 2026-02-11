@@ -1,48 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import './Footer.css';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import TwitterIcon from '@mui/icons-material/Twitter';
 
 function Footer() {
+  const [showServiceCode, setShowServiceCode] = useState(false);
+  const serviceCode = "501-143";
+
   return (
-    <div className="footer_container">
-      {/* Social icons */}
+    <footer className="footer_container">
       <div className="footer_social">
-        <FacebookIcon />
-        <InstagramIcon />
-        <YouTubeIcon />
+        <a href="https://www.facebook.com/netflix" target="_blank" rel="noreferrer"><FacebookIcon /></a>
+        <a href="https://www.instagram.com/netflix" target="_blank" rel="noreferrer"><InstagramIcon /></a>
+        <a href="https://twitter.com/netflix" target="_blank" rel="noreferrer"><TwitterIcon /></a>
+        <a href="https://www.youtube.com/user/NewOnNetflix" target="_blank" rel="noreferrer"><YouTubeIcon /></a>
       </div>
 
-      {/* Links */}
       <div className="footer_links">
         <div className="footer_column">
-          <p>Audio Description</p>
-          <p>Investor Relations</p>
-          <p>Legal Notice</p>
-          <p>Service Code</p>
+          <Link to="#">Audio Description</Link>
+          <Link to="#">Investor Relations</Link>
+          <Link to="#">Legal Notices</Link>
+          <Link to="#" onClick={(e) => { e.preventDefault(); setShowServiceCode(!showServiceCode); }}>
+            Service Code
+          </Link>
         </div>
         <div className="footer_column">
-          <p>Help Center</p>
-          <p>Jobs</p>
-          <p>Cookie Preferences</p>
+          <Link to="/help">Help Center</Link>
+          <Link to="#">Jobs</Link>
+          <Link to="#">Cookie Preferences</Link>
         </div>
         <div className="footer_column">
-          <p>Gift Cards</p>
-          <p>Terms of Use</p>
-          <p>Corporate Information</p>
+          <Link to="#">Gift Cards</Link>
+          <Link to="#">Terms of Use</Link>
+          <Link to="#">Corporate Information</Link>
         </div>
         <div className="footer_column">
-          <p>Media Center</p>
-          <p>Privacy</p>
-          <p>Contact Us</p>
+          <Link to="#">Media Center</Link>
+          <Link to="#">Privacy</Link>
+          <Link to="#">Contact Us</Link>
         </div>
       </div>
-      {/* hand write or ownership */}
+
+      <div className="footer_service">
+        <button className="service_code_btn" onClick={() => setShowServiceCode(!showServiceCode)}>
+          {showServiceCode ? serviceCode : "Service Code"}
+        </button>
+      </div>
+
       <div className="footer_copy">
         © 1997-2024 Netflix, Inc.
       </div>
-    </div>
+    </footer>
   );
 }
 
