@@ -10,10 +10,10 @@ const HelpCenter = () => {
     const [modal, setModal] = React.useState({ show: false, title: "", message: "" });
 
     const trendingTopics = [
-        { title: "How to sign up for Netflix", video: "https://www.youtube.com/watch?v=shM9_qYQ1y0&t=4s" },
-        { title: "Plans and Pricing", video: "https://www.youtube.com/watch?v=Fq2CVMfXoY4" },
-        { title: "Can't sign in to Netflix", video: "https://www.youtube.com/watch?v=shM9_qYQ1y0" },
-        { title: "How to watch Netflix on your TV", video: "https://www.youtube.com/watch?v=O73Yn_lsh8I" }
+        { title: "How to sign up for Netflix", video: "https://youtu.be/GXPpytVRN9w?si=M8eLrPxMrSexJ1un" },
+        { title: "Plans and Pricing", video: "https://youtu.be/Ptr5SahPJls?si=6jtd7T1S9V-UzKb_" },
+        { title: "Can't sign in to Netflix", video: "https://youtu.be/6TJ5ktQ9DUY?si=kAVu-KXBzrQGnhRG" },
+        { title: "How to watch Netflix on your TV", video: "https://youtu.be/3TyKalYQefE?si=YwvdZeruZK-enspp" }
     ];
 
     const quickLinks = [
