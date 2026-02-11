@@ -21,12 +21,23 @@ const SignUpPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Persist the email
+        // Persist the user data
         const registeredEmails = JSON.parse(localStorage.getItem('registeredEmails')) || [];
-        if (!registeredEmails.includes(formData.email)) {
-            registeredEmails.push(formData.email);
+        const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || {};
+
+        if (!registeredEmails.includes(formData.email.toLowerCase())) {
+            registeredEmails.push(formData.email.toLowerCase());
             localStorage.setItem('registeredEmails', JSON.stringify(registeredEmails));
         }
+
+        registeredUsers[formData.email.toLowerCase()] = formData.username;
+        localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+
+        // Set as current user
+        localStorage.setItem('currentUser', JSON.stringify({
+            username: formData.username,
+            email: formData.email.toLowerCase()
+        }));
 
         console.log("User Signed Up:", formData);
         // Navigate to home after registration

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Header.css';
 import Netflix_logo from "../../assets/images/Netflix_logo.svg";
 import SearchIcon from '@mui/icons-material/Search';
@@ -12,11 +13,41 @@ function Header({ setSearchQuery, setSelectedCategory, setSelectedGenre, selecte
   const [searchActive, setSearchActive] = useState(false);
   const [profileDropdownActive, setProfileDropdownActive] = useState(false);
   const [movieDropdownActive, setMovieDropdownActive] = useState(false);
+  const navigate = useNavigate();
+
+  const [currentUser, setCurrentUser] = useState(() => {
+    const savedUser = localStorage.getItem('currentUser');
+    return savedUser ? JSON.parse(savedUser) : { username: "User" };
+  });
 
   const profiles = [
-    { id: 1, name: "Kaleb", avatar: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" },
+    { id: 1, name: currentUser.username, avatar: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" },
     { id: 2, name: "Kids", avatar: "https://occ-0-3934-3933.1.nflxso.net/dnm/api/v6/K6ndS2WiUm2STUunY19fN-4X6ks/AAAABXy6-U9Y-nL5U0Lue9Z1PloS8W5g3_Y6Z-V7Z7-V7Z7-V7Z7-V7Z7-V7Z7-V7Z7-V7Z7.png?r=abc" },
   ];
+
+  const handleSignOut = () => {
+    localStorage.removeItem('currentUser');
+    navigate('/');
+  };
+
+  const handleMenuClick = (item) => {
+    switch (item) {
+      case 'Manage Profiles':
+        navigate('/manage-profiles');
+        break;
+      case 'Transfer Profile':
+        navigate('/transfer-profile');
+        break;
+      case 'Account':
+        navigate('/account');
+        break;
+      case 'Help Center':
+        navigate('/help');
+        break;
+      default:
+        break;
+    }
+  };
 
   const handleSearchChange = (e) => {
     const query = e.target.value;
@@ -124,17 +155,17 @@ function Header({ setSearchQuery, setSelectedCategory, setSelectedGenre, selecte
                     <span>{profile.name}</span>
                   </li>
                 ))}
-                <li className="header__dropdownItem">
+                <li className="header__dropdownItem" onClick={() => handleMenuClick('Manage Profiles')}>
                   <span>Manage Profiles</span>
                 </li>
-                <li className="header__dropdownItem">
+                <li className="header__dropdownItem" onClick={() => handleMenuClick('Transfer Profile')}>
                   <span>Transfer Profile</span>
                 </li>
               </ul>
               <ul className="header__dropdownSecondary">
-                <li>Account</li>
-                <li>Help Center</li>
-                <li>Sign out of Netflix</li>
+                <li onClick={() => handleMenuClick('Account')}>Account</li>
+                <li onClick={() => handleMenuClick('Help Center')}>Help Center</li>
+                <li onClick={handleSignOut}>Sign out of Netflix</li>
               </ul>
             </div>
           </div>

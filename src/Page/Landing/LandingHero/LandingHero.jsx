@@ -15,6 +15,14 @@ const LandingHero = () => {
 
         // If email is already registered, go to home
         if (isRegistered) {
+            const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || {};
+            const username = registeredUsers[email.toLowerCase()] || "User";
+
+            localStorage.setItem('currentUser', JSON.stringify({
+                username: username,
+                email: email.toLowerCase()
+            }));
+
             navigate('/home');
         }
         // Mock logic: If email includes 'new', go to signup

@@ -1,0 +1,136 @@
+.manage-profiles {
+    background-color: #141414;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.manage-profiles__container {
+    text-align: center;
+}
+
+.manage-profiles__container h1 {
+    font-size: 3.5rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.profile-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 4rem;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    width: 150px;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.edit-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.edit-icon {
+    font-size: 3rem !important;
+    color: white;
+}
+
+.profile:hover .avatar-wrapper {
+    outline: 2px solid white;
+}
+
+.profile:hover .edit-overlay {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.profile-name {
+    color: grey;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+
+.profile:hover .profile-name {
+    color: white;
+}
+
+.add-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-icon-circle {
+    font-size: 5rem;
+    color: grey;
+}
+
+.done-button {
+    background-color: #fff;
+    color: black;
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.done-button:hover {
+    background-color: #e50914;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .manage-profiles__container h1 {
+        font-size: 2rem;
+    }
+
+    .profile-list {
+        flex-wrap: wrap;
+    }
+
+    .profile {
+        width: 100px;
+    }
+
+    .avatar-wrapper {
+        width: 100px;
+        height: 100px;
+    }
+}

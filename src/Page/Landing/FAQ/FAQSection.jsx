@@ -48,6 +48,14 @@ const FAQSection = () => {
         const isRegistered = registeredEmails.includes(email.toLowerCase());
 
         if (isRegistered) {
+            const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || {};
+            const username = registeredUsers[email.toLowerCase()] || "User";
+
+            localStorage.setItem('currentUser', JSON.stringify({
+                username: username,
+                email: email.toLowerCase()
+            }));
+
             navigate('/home');
         } else {
             navigate('/signup', { state: { email } });

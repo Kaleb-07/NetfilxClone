@@ -1,0 +1,125 @@
+.account-page {
+    background-color: #f3f3f3;
+    color: #333;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+}
+
+.account-navbar {
+    background-color: #000;
+    padding: 15px 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.account-logo {
+    height: 30px;
+    cursor: pointer;
+}
+
+.nav-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.account-content {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 4%;
+}
+
+.account-content h1 {
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #999;
+    padding-bottom: 15px;
+}
+
+.account-section {
+    display: flex;
+    padding: 20px 0;
+}
+
+.section-title {
+    flex: 0 0 250px;
+}
+
+.section-title h2 {
+    font-size: 1.1rem;
+    color: #777;
+    font-weight: 600;
+}
+
+.cancel-button {
+    background-color: #e6e6e6;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.section-details {
+    flex-grow: 1;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+
+.detail-row span {
+    font-weight: 600;
+}
+
+.detail-row a {
+    color: #0073bb;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.detail-row a:hover {
+    text-decoration: underline;
+}
+
+.ultra-hd {
+    border: 1px solid #333;
+    padding: 1px 4px;
+    font-size: 0.7rem;
+    border-radius: 2px;
+    margin-left: 5px;
+}
+
+.section-divider {
+    border: none;
+    border-top: 1px solid #d5d5d5;
+    margin: 0;
+}
+
+.back-home-btn {
+    margin-top: 30px;
+    background-color: #0073bb;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@media (max-width: 800px) {
+    .account-section {
+        flex-direction: column;
+    }
+
+    .section-title {
+        flex: none;
+        margin-bottom: 15px;
+    }
+}
