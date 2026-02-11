@@ -5,6 +5,11 @@ import './TransferProfile.css';
 
 const TransferProfile = () => {
     const navigate = useNavigate();
+    const [showModal, setShowModal] = React.useState(false);
+
+    const handleContinue = () => {
+        setShowModal(true);
+    };
 
     return (
         <div className="transfer-page">
@@ -38,10 +43,20 @@ const TransferProfile = () => {
                         </li>
                     </ul>
 
-                    <button className="continue-btn" onClick={() => navigate('/home')}>Continue</button>
+                    <button className="continue-btn" onClick={handleContinue}>Continue</button>
                     <p className="privacy-note">Your profile information will be used to move this profile. <a href="#">Learn more.</a></p>
                 </div>
             </div>
+
+            {showModal && (
+                <div className="modal-overlay">
+                    <div className="modern-modal">
+                        <h2>Coming Soon!</h2>
+                        <p>The Profile Transfer feature is currently under development to ensure a seamless experience.</p>
+                        <button className="modal-close-btn" onClick={() => setShowModal(false)}>Got it</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
