@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import LandingHeader from '../LandingHeader/LandingHeader';
-import './LandingHero.css';
+import { useLanguage } from '../../../utils/LanguageContext';
 
 const LandingHero = () => {
+    const { t } = useLanguage();
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
 
@@ -48,19 +46,24 @@ const LandingHero = () => {
                 />
             </div>
             <div className="landing-hero__content">
-                <h1>Unlimited movies, TV <br /> shows, and more</h1>
-                <p className="hero-subtitle">Starts at US$6.99. Cancel anytime.</p>
-                <p className="hero-cta">Ready to watch? Enter your email to create or restart your membership.</p>
+                <h1>{t('hero.title').split('<br />').map((text, i) => (
+                    <React.Fragment key={i}>
+                        {text}
+                        {i < t('hero.title').split('<br />').length - 1 && <br />}
+                    </React.Fragment>
+                ))}</h1>
+                <p className="hero-subtitle">{t('hero.subtitle')}</p>
+                <p className="hero-cta">{t('hero.cta')}</p>
                 <form className="hero-form" onSubmit={handleGetStarted}>
                     <input
                         type="email"
-                        placeholder="Email address"
+                        placeholder={t('hero.emailPlaceholder')}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                     <button type="submit">
-                        Get Started
+                        {t('hero.getStarted')}
                         <span className="button-arrow">›</span>
                     </button>
                 </form>

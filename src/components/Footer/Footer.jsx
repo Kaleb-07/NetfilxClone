@@ -7,7 +7,10 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LanguageIcon from '@mui/icons-material/Language';
 
+import { useLanguage } from "../../utils/LanguageContext";
+
 function Footer() {
+  const { language, changeLanguage, t } = useLanguage();
   const [showServiceCode, setShowServiceCode] = useState(false);
   const serviceCode = "501-143";
 
@@ -22,45 +25,45 @@ function Footer() {
 
       <div className="footer_links">
         <div className="footer_column">
-          <Link to="#">Audio Description</Link>
-          <Link to="#">Investor Relations</Link>
-          <Link to="#">Legal Notices</Link>
+          <Link to="#">{t('footer.audioDescription')}</Link>
+          <Link to="#">{t('footer.investorRelations')}</Link>
+          <Link to="#">{t('footer.legalNotices')}</Link>
           <Link to="#" onClick={(e) => { e.preventDefault(); setShowServiceCode(!showServiceCode); }}>
-            Service Code
+            {t('footer.serviceCode')}
           </Link>
         </div>
         <div className="footer_column">
-          <Link to="/help">Help Center</Link>
-          <Link to="#">Jobs</Link>
-          <Link to="#">Cookie Preferences</Link>
+          <Link to="/help">{t('footer.helpCenter')}</Link>
+          <Link to="#">{t('footer.jobs')}</Link>
+          <Link to="#">{t('footer.cookiePreferences')}</Link>
         </div>
         <div className="footer_column">
-          <Link to="#">Gift Cards</Link>
-          <Link to="#">Terms of Use</Link>
-          <Link to="#">Corporate Information</Link>
+          <Link to="#">{t('footer.giftCards')}</Link>
+          <Link to="#">{t('footer.termsOfUse')}</Link>
+          <Link to="#">{t('footer.corporateInformation')}</Link>
         </div>
         <div className="footer_column">
-          <Link to="#">Media Center</Link>
-          <Link to="#">Privacy</Link>
-          <Link to="#">Contact Us</Link>
+          <Link to="#">{t('footer.mediaCenter')}</Link>
+          <Link to="#">{t('footer.privacy')}</Link>
+          <Link to="#">{t('footer.contactUs')}</Link>
         </div>
       </div>
 
       <div className="footer_service">
         <div className="lang-selector">
           <LanguageIcon className="globe-icon" />
-          <select>
-            <option>English</option>
-            <option>Español</option>
+          <select value={language} onChange={(e) => changeLanguage(e.target.value)}>
+            <option value="en">English</option>
+            <option value="es">Español</option>
           </select>
         </div>
         <button className="service_code_btn" onClick={() => setShowServiceCode(!showServiceCode)}>
-          {showServiceCode ? serviceCode : "Service Code"}
+          {showServiceCode ? serviceCode : t('footer.serviceCode')}
         </button>
       </div>
 
       <div className="footer_copy">
-        © 1997-2024 Netflix, Inc.
+        {t('footer.copyright')}
       </div>
     </footer>
   );

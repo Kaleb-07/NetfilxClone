@@ -2,53 +2,56 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LanguageIcon from '@mui/icons-material/Language';
 import './LandingFooter.css';
+import { useLanguage } from '../../../utils/LanguageContext';
 
 const LandingFooter = () => {
+    const { language, changeLanguage, t } = useLanguage();
+
     return (
         <footer className="landing-footer">
             <div className="landing-footer__container">
                 <p className="footer-top">
-                    Questions? Call <a href="tel:1-844-505-2993">1-844-505-2993</a>
+                    {t('footer.questions')} <a href="tel:1-844-505-2993">1-844-505-2993</a>
                 </p>
                 <div className="footer-links">
                     <ul>
-                        <li><Link to="/">FAQ</Link></li>
-                        <li><a href="#">Investor Relations</a></li>
-                        <li><a href="#">Buy Gift Cards</a></li>
-                        <li><a href="#">Cookie Preferences</a></li>
-                        <li><a href="#">Legal Notices</a></li>
+                        <li><Link to="/">{t('footer.faq')}</Link></li>
+                        <li><a href="#">{t('footer.investorRelations')}</a></li>
+                        <li><a href="#">{t('footer.buyGiftCards')}</a></li>
+                        <li><a href="#">{t('footer.cookiePreferences')}</a></li>
+                        <li><a href="#">{t('footer.legalNotices')}</a></li>
                     </ul>
                     <ul>
-                        <li><Link to="/help">Help Center</Link></li>
-                        <li><a href="#">Jobs</a></li>
-                        <li><a href="#">Ways to Watch</a></li>
-                        <li><a href="#">Corporate Information</a></li>
-                        <li><a href="#">Only on Netflix</a></li>
+                        <li><Link to="/help">{t('footer.helpCenter')}</Link></li>
+                        <li><a href="#">{t('footer.jobs')}</a></li>
+                        <li><a href="#">{t('footer.waysToWatch')}</a></li>
+                        <li><a href="#">{t('footer.corporateInformation')}</a></li>
+                        <li><a href="#">{t('footer.onlyOnNetflix')}</a></li>
                     </ul>
                     <ul>
-                        <li><a href="#">Account</a></li>
-                        <li><a href="#">Netflix Shop</a></li>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Ad Choices</a></li>
+                        <li><a href="#">{t('footer.account')}</a></li>
+                        <li><a href="#">{t('footer.netflixShop')}</a></li>
+                        <li><a href="#">{t('footer.termsOfUse')}</a></li>
+                        <li><a href="#">{t('footer.contactUs')}</a></li>
+                        <li><a href="#">{t('footer.adChoices')}</a></li>
                     </ul>
                     <ul>
-                        <li><a href="#">Media Center</a></li>
-                        <li><a href="#">Redeem Gift Cards</a></li>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Speed Test</a></li>
+                        <li><a href="#">{t('footer.mediaCenter')}</a></li>
+                        <li><a href="#">{t('footer.redeemGiftCards')}</a></li>
+                        <li><a href="#">{t('footer.privacy')}</a></li>
+                        <li><a href="#">{t('footer.speedTest')}</a></li>
                     </ul>
                 </div>
                 <div className="footer-lang">
                     <div className="lang-selector">
                         <LanguageIcon className="globe-icon" />
-                        <select>
-                            <option>English</option>
-                            <option>Español</option>
+                        <select value={language} onChange={(e) => changeLanguage(e.target.value)}>
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
                         </select>
                     </div>
                 </div>
-                <p className="footer-bottom">Netflix United States</p>
+                <p className="footer-bottom">{t('footer.country')}</p>
             </div>
         </footer>
     );
