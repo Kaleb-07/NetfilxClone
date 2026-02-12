@@ -2,14 +2,12 @@
   background-color: #141414;
   color: rgb(173, 176, 179);
   padding: 50px 4% 30px;
-  max-width: 1000px;
-  margin: 0 auto;
+  width: 100%;
 }
 
-.footer_social {
-  margin-bottom: 20px;
-  display: flex;
-  gap: 25px;
+.footer_content {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .footer_social a {
