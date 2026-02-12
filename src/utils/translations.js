@@ -76,7 +76,8 @@ export const translations = {
         },
         languages: {
             en: "English",
-            es: "Español"
+            es: "Español",
+            ar: "العربية"
         }
     },
     es: {
@@ -156,7 +157,89 @@ export const translations = {
         },
         languages: {
             en: "Inglés",
-            es: "Español"
+            es: "Español",
+            ar: "Árabe"
+        }
+    },
+    ar: {
+        hero: {
+            title: "أفلام ومسلسلات غير محدودة وأكثر",
+            subtitle: "تبدأ من 6.99 دولار. ألغِ في أي وقت.",
+            cta: "هل أنت مستعد للمشاهدة؟ أدخل بريدك الإلكتروني لإنشاء عضويتك أو استعادتها.",
+            emailPlaceholder: "عنوان البريد الإلكتروني",
+            getStarted: "ابدأ الآن"
+        },
+        header: {
+            home: "الصفحة الرئيسية",
+            tvShows: "العروض التلفزيونية",
+            movies: "الأفلام",
+            newAndPopular: "الأحدث والأكثر شعبية",
+            myList: "قائمتي",
+            browseByLanguages: "التصفح حسب اللغات",
+            searchPlaceholder: "عناوين، أشخاص، أنواع",
+            kids: "أطفال",
+            manageProfiles: "إدارة الملفات الشخصية",
+            transferProfile: "نقل الملف الشخصي",
+            account: "الحساب",
+            helpCenter: "مركز المساعدة",
+            signOut: "تسجيل الخروج من نتفليكس",
+            signIn: "تسجيل الدخول"
+        },
+        categories: {
+            resultsFor: "نتائج لـ",
+            trendingTvShows: "عروض تلفزيونية رائجة",
+            netflixOriginals: "أصلية من نتفليكس",
+            trendingMovies: "أفلام رائجة",
+            actionMovies: "أفلام حركة",
+            comedyMovies: "أفلام كوميدية",
+            horrorMovies: "أفلام رعب",
+            romanceMovies: "أفلام رومانسية",
+            documentaries: "أفلام وثائقية",
+            comingSoon: "قريباً",
+            trendingNow: "رائج الآن",
+            topRated: "الأعلى تقييماً",
+            myList: "قائمتي",
+            emptyList: "قائمتك فارغة.",
+            emptyListSubtitle: "أضف بعض الأفلام أو العروض التلفزيونية لتراها هنا."
+        },
+        genres: {
+            action: "حركة",
+            comedy: "كوميدي",
+            horror: "رعب",
+            romance: "رومانسي",
+            documentaries: "وثائقي"
+        },
+        footer: {
+            questions: "هل لديك أسئلة؟ اتصل بنا على",
+            faq: "الأسئلة الشائعة",
+            helpCenter: "مركز المساعدة",
+            account: "الحساب",
+            mediaCenter: "مركز الإعلام",
+            investorRelations: "علاقات المستثمرين",
+            jobs: "الوظائف",
+            netflixShop: "متجر نتفليكس",
+            redeemGiftCards: "استرداد بطاقات الهدايا",
+            buyGiftCards: "شراء بطاقات الهدايا",
+            waysToWatch: "طرق المشاهدة",
+            termsOfUse: "شروط الاستخدام",
+            privacy: "الخصوصية",
+            cookiePreferences: "تفضيلات ملفات تعريف الارتباط",
+            corporateInformation: "معلومات الشركة",
+            contactUs: "اتصل بنا",
+            speedTest: "اختبار السرعة",
+            legalNotices: "إشعارات قانونية",
+            onlyOnNetflix: "فقط على نتفليكس",
+            adChoices: "خيارات الإعلانات",
+            serviceCode: "رمز الخدمة",
+            audioDescription: "الوصف الصوتي",
+            giftCards: "بطاقات الهدايا",
+            copyright: "© 1997-2024 Netflix, Inc.",
+            country: "نتفليكس بوان"
+        },
+        languages: {
+            en: "الإنجليزية",
+            es: "الأسبانية",
+            ar: "العربية"
         }
     }
 };

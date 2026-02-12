@@ -51,12 +51,21 @@ function Footer() {
         </div>
 
         <div className="footer_service">
-          <div className="lang-selector">
-            <LanguageIcon className="globe-icon" />
-            <select value={language} onChange={(e) => changeLanguage(e.target.value)}>
-              <option value="en">English</option>
-              <option value="es">Español</option>
-            </select>
+          <div className="footer-lang">
+            <div className="lang-selector">
+              <div className="lang-flag">
+                <img
+                  src={language === 'en' ? 'https://flagcdn.com/w40/us.png' : language === 'es' ? 'https://flagcdn.com/w40/es.png' : 'https://flagcdn.com/w40/sa.png'}
+                  alt={language}
+                  style={{ width: '24px', height: 'auto', display: 'block' }}
+                />
+              </div>
+              <select value={language} onChange={(e) => changeLanguage(e.target.value)}>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="ar">العربية</option>
+              </select>
+            </div>
           </div>
           <button className="service_code_btn" onClick={() => setShowServiceCode(!showServiceCode)}>
             {showServiceCode ? serviceCode : t('footer.serviceCode')}

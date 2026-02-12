@@ -10,6 +10,12 @@
   margin: 0 auto;
 }
 
+.footer_social {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 25px;
+}
+
 .footer_social a {
   color: rgb(173, 176, 179);
   transition: color 0.2s;
@@ -66,14 +72,20 @@
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 4px;
-  padding: 4px 8px;
-  background-color: transparent;
+  padding: 4px 12px;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: border-color 0.3s, background-color 0.3s;
 }
 
-.globe-icon {
-  font-size: 1rem !important;
-  color: rgb(173, 176, 179);
-  margin-right: 8px;
+.lang-selector:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.lang-flag {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .lang-selector select {
@@ -81,9 +93,14 @@
   color: rgb(173, 176, 179);
   border: none;
   font-size: 0.875rem;
-  padding: 4px 20px 4px 0;
+  padding: 4px 10px 4px 0;
   cursor: pointer;
   font-weight: 500;
+  transition: color 0.3s;
+}
+
+.lang-selector:hover select {
+  color: #fff;
 }
 
 .lang-selector select:focus {
