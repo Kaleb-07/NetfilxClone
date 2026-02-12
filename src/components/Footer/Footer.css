@@ -56,6 +56,40 @@
 .footer_service {
   margin-bottom: 20px;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.lang-selector {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 4px 8px;
+  background-color: transparent;
+}
+
+.globe-icon {
+  font-size: 1rem !important;
+  color: rgb(173, 176, 179);
+  margin-right: 8px;
+}
+
+.lang-selector select {
+  background: transparent;
+  color: rgb(173, 176, 179);
+  border: none;
+  font-size: 0.875rem;
+  padding: 4px 20px 4px 0;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.lang-selector select:focus {
+  outline: none;
 }
 
 .service_code_btn {

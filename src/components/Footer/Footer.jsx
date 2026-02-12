@@ -5,6 +5,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import LanguageIcon from '@mui/icons-material/Language';
 
 function Footer() {
   const [showServiceCode, setShowServiceCode] = useState(false);
@@ -46,6 +47,13 @@ function Footer() {
       </div>
 
       <div className="footer_service">
+        <div className="lang-selector">
+          <LanguageIcon className="globe-icon" />
+          <select>
+            <option>English</option>
+            <option>Español</option>
+          </select>
+        </div>
         <button className="service_code_btn" onClick={() => setShowServiceCode(!showServiceCode)}>
           {showServiceCode ? serviceCode : "Service Code"}
         </button>
