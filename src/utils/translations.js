@@ -7,6 +7,46 @@ export const translations = {
             emailPlaceholder: "Email address",
             getStarted: "Get Started"
         },
+        header: {
+            home: "Home",
+            tvShows: "TV Shows",
+            movies: "Movies",
+            newAndPopular: "New & Popular",
+            myList: "My List",
+            browseByLanguages: "Browse by Languages",
+            searchPlaceholder: "Titles, people, genres",
+            kids: "Kids",
+            manageProfiles: "Manage Profiles",
+            transferProfile: "Transfer Profile",
+            account: "Account",
+            helpCenter: "Help Center",
+            signOut: "Sign out of Netflix",
+            signIn: "Sign In"
+        },
+        categories: {
+            resultsFor: "Results for",
+            trendingTvShows: "Trending TV Shows",
+            netflixOriginals: "Netflix Originals",
+            trendingMovies: "Trending Movies",
+            actionMovies: "Action Movies",
+            comedyMovies: "Comedy Movies",
+            horrorMovies: "Horror Movies",
+            romanceMovies: "Romance Movies",
+            documentaries: "Documentaries",
+            comingSoon: "Coming Soon",
+            trendingNow: "Trending Now",
+            topRated: "Top Rated",
+            myList: "My List",
+            emptyList: "Your list is empty.",
+            emptyListSubtitle: "Add some movies or TV shows to see them here."
+        },
+        genres: {
+            action: "Action",
+            comedy: "Comedy",
+            horror: "Horror",
+            romance: "Romance",
+            documentaries: "Documentaries"
+        },
         footer: {
             questions: "Questions? Call",
             faq: "FAQ",
@@ -46,6 +86,46 @@ export const translations = {
             cta: "¿Quieres ver Netflix ya? Ingresa tu email para crear una suscripción o reiniciar la tuya.",
             emailPlaceholder: "Email",
             getStarted: "Comenzar"
+        },
+        header: {
+            home: "Inicio",
+            tvShows: "Series",
+            movies: "Películas",
+            newAndPopular: "Novedades populares",
+            myList: "Mi lista",
+            browseByLanguages: "Explorar por idiomas",
+            searchPlaceholder: "Títulos, personas, géneros",
+            kids: "Niños",
+            manageProfiles: "Administrar perfiles",
+            transferProfile: "Transferir perfil",
+            account: "Cuenta",
+            helpCenter: "Centro de ayuda",
+            signOut: "Cerrar sesión en Netflix",
+            signIn: "Iniciar sesión"
+        },
+        categories: {
+            resultsFor: "Resultados para",
+            trendingTvShows: "Series en tendencia",
+            netflixOriginals: "Originales de Netflix",
+            trendingMovies: "Películas en tendencia",
+            actionMovies: "Películas de acción",
+            comedyMovies: "Películas de comedia",
+            horrorMovies: "Películas de terror",
+            romanceMovies: "Películas románticas",
+            documentaries: "Documentales",
+            comingSoon: "Próximamente",
+            trendingNow: "Tendencias",
+            topRated: "Los más valorados",
+            myList: "Mi lista",
+            emptyList: "Tu lista está vacía.",
+            emptyListSubtitle: "Agrega algunas películas o series para verlas aquí."
+        },
+        genres: {
+            action: "Acción",
+            comedy: "Comedia",
+            horror: "Terror",
+            romance: "Romance",
+            documentaries: "Documentales"
         },
         footer: {
             questions: "¿Preguntas? Llama al",

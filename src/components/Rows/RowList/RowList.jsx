@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Row from "../Row/Row";
 import requests from "../../../utils/requests";
+import { useLanguage } from "../../../utils/LanguageContext";
 
 function RowList({ searchQuery, selectedCategory, selectedGenre, myList, updateMyList }) {
+  const { t } = useLanguage();
 
   // Search state takes priority
   if (searchQuery) {
     return (
       <div className="search-results-container" style={{ paddingTop: '80px' }}>
         <Row
-          title={`Results for "${searchQuery}"`}
+          title={`${t('categories.resultsFor')} "${searchQuery}"`}
           fetchUrl={requests.fetchSearch(searchQuery)}
           isLarge
           myList={myList}
@@ -25,8 +27,8 @@ function RowList({ searchQuery, selectedCategory, selectedGenre, myList, updateM
       case "TV Shows":
         return (
           <>
-            <Row title="Trending TV Shows" fetchUrl={requests.fetchTvShow} isLarge myList={myList} updateMyList={updateMyList} />
-            <Row title="Netflix Originals" fetchUrl={requests.fetchNetflixOriginals} myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.trendingTvShows')} fetchUrl={requests.fetchTvShow} isLarge myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.netflixOriginals')} fetchUrl={requests.fetchNetflixOriginals} myList={myList} updateMyList={updateMyList} />
           </>
         );
 
@@ -34,7 +36,7 @@ function RowList({ searchQuery, selectedCategory, selectedGenre, myList, updateM
         if (selectedGenre) {
           return (
             <Row
-              title={`${selectedGenre.name} Movies`}
+              title={`${t(`genres.${selectedGenre.name.toLowerCase()}`)} ${t('header.movies')}`}
               fetchUrl={`/discover/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}&with_genres=${selectedGenre.id}`}
               isLarge
               myList={myList}
@@ -44,19 +46,19 @@ function RowList({ searchQuery, selectedCategory, selectedGenre, myList, updateM
         }
         return (
           <>
-            <Row title="Trending Movies" fetchUrl={requests.fetchTrending} isLarge myList={myList} updateMyList={updateMyList} />
-            <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} myList={myList} updateMyList={updateMyList} />
-            <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} myList={myList} updateMyList={updateMyList} />
-            <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} myList={myList} updateMyList={updateMyList} />
-            <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.trendingMovies')} fetchUrl={requests.fetchTrending} isLarge myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.actionMovies')} fetchUrl={requests.fetchActionMovies} myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.comedyMovies')} fetchUrl={requests.fetchComedyMovies} myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.horrorMovies')} fetchUrl={requests.fetchHorrorMovies} myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.romanceMovies')} fetchUrl={requests.fetchRomanceMovies} myList={myList} updateMyList={updateMyList} />
           </>
         );
 
       case "New & Popular":
         return (
           <>
-            <Row title="Coming Soon" fetchUrl={requests.fetchUpcoming} isLarge myList={myList} updateMyList={updateMyList} />
-            <Row title="Trending Now" fetchUrl={requests.fetchTrending} myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.comingSoon')} fetchUrl={requests.fetchUpcoming} isLarge myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.trendingNow')} fetchUrl={requests.fetchTrending} myList={myList} updateMyList={updateMyList} />
           </>
         );
 
@@ -64,11 +66,11 @@ function RowList({ searchQuery, selectedCategory, selectedGenre, myList, updateM
         return (
           <div style={{ paddingTop: '80px', minHeight: '80vh' }}>
             {myList && myList.length > 0 ? (
-              <Row title="My List" moviesData={myList} myList={myList} updateMyList={updateMyList} isLarge />
+              <Row title={t('categories.myList')} moviesData={myList} myList={myList} updateMyList={updateMyList} isLarge />
             ) : (
               <div style={{ color: 'white', textAlign: 'center', marginTop: '100px' }}>
-                <h2>Your list is empty.</h2>
-                <p>Add some movies or TV shows to see them here.</p>
+                <h2>{t('categories.emptyList')}</h2>
+                <p>{t('categories.emptyListSubtitle')}</p>
               </div>
             )}
           </div>
@@ -78,16 +80,16 @@ function RowList({ searchQuery, selectedCategory, selectedGenre, myList, updateM
         return (
           <>
             {myList && myList.length > 0 && (
-              <Row title="My List" moviesData={myList} myList={myList} updateMyList={updateMyList} />
+              <Row title={t('categories.myList')} moviesData={myList} myList={myList} updateMyList={updateMyList} />
             )}
-            <Row title="Netflix Originals" fetchUrl={requests.fetchNetflixOriginals} isLarge myList={myList} updateMyList={updateMyList} />
-            <Row title="Trending Now" fetchUrl={requests.fetchTrending} myList={myList} updateMyList={updateMyList} />
-            <Row title="Top Rated" fetchUrl={requests.fetchTopRated} myList={myList} updateMyList={updateMyList} />
-            <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} myList={myList} updateMyList={updateMyList} />
-            <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} myList={myList} updateMyList={updateMyList} />
-            <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} myList={myList} updateMyList={updateMyList} />
-            <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} myList={myList} updateMyList={updateMyList} />
-            <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.netflixOriginals')} fetchUrl={requests.fetchNetflixOriginals} isLarge myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.trendingNow')} fetchUrl={requests.fetchTrending} myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.topRated')} fetchUrl={requests.fetchTopRated} myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.actionMovies')} fetchUrl={requests.fetchActionMovies} myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.comedyMovies')} fetchUrl={requests.fetchComedyMovies} myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.horrorMovies')} fetchUrl={requests.fetchHorrorMovies} myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.romanceMovies')} fetchUrl={requests.fetchRomanceMovies} myList={myList} updateMyList={updateMyList} />
+            <Row title={t('categories.documentaries')} fetchUrl={requests.fetchDocumentaries} myList={myList} updateMyList={updateMyList} />
           </>
         );
     }

@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import Netflix_logo from "../../../assets/images/Netflix_logo.svg";
 import './LandingHeader.css';
 
+import { useLanguage } from '../../../utils/LanguageContext';
+
 const LandingHeader = () => {
+    const { t } = useLanguage();
     const navigate = useNavigate();
 
     return (
@@ -12,7 +15,7 @@ const LandingHeader = () => {
                 <img src={Netflix_logo} alt="Netflix Logo" />
             </div>
             <div className="landing-header__actions">
-                <button className="signin-button" onClick={() => navigate('/login')}>Sign In</button>
+                <button className="signin-button" onClick={() => navigate('/login')}>{t('header.signIn')}</button>
             </div>
         </header>
     );

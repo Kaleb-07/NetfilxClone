@@ -7,7 +7,10 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
+import { useLanguage } from '../../utils/LanguageContext';
+
 function Header({ setSearchQuery, setSelectedCategory, setSelectedGenre, selectedCategory, onProfileSwitch }) {
+  const { t } = useLanguage();
   const [show, setShow] = useState(false);
   const [localSearchQuery, setLocalSearchQuery] = useState("");
   const [searchActive, setSearchActive] = useState(false);
@@ -133,32 +136,32 @@ function Header({ setSearchQuery, setSelectedCategory, setSelectedGenre, selecte
             onClick={() => handleCategoryClick("Home")}
           />
           <ul>
-            <li className={selectedCategory === "Home" ? "active" : ""} onClick={() => handleCategoryClick("Home")}>Home</li>
-            <li className={selectedCategory === "TV Shows" ? "active" : ""} onClick={() => handleCategoryClick("TV Shows")}>TV Shows</li>
+            <li className={selectedCategory === "Home" ? "active" : ""} onClick={() => handleCategoryClick("Home")}>{t('header.home')}</li>
+            <li className={selectedCategory === "TV Shows" ? "active" : ""} onClick={() => handleCategoryClick("TV Shows")}>{t('header.tvShows')}</li>
             <li
               className={`header__navItem ${selectedCategory === "Movies" ? "active" : ""}`}
               onMouseEnter={() => setMovieDropdownActive(true)}
               onMouseLeave={() => setMovieDropdownActive(false)}
               onClick={() => handleCategoryClick("Movies")}
             >
-              <span>Movies</span>
+              <span>{t('header.movies')}</span>
               <ArrowDropDownIcon className="header__navArrow" />
               {movieDropdownActive && (
                 <div className="header__movieDropdown">
                   <span className="header__dropdownCaret"></span>
                   <ul className="header__genreList">
-                    <li onClick={() => handleGenreClick(28, "Action")}>Action</li>
-                    <li onClick={() => handleGenreClick(35, "Comedy")}>Comedy</li>
-                    <li onClick={() => handleGenreClick(27, "Horror")}>Horror</li>
-                    <li onClick={() => handleGenreClick(10749, "Romance")}>Romance</li>
-                    <li onClick={() => handleGenreClick(99, "Documentaries")}>Documentaries</li>
+                    <li onClick={() => handleGenreClick(28, "Action")}>{t('genres.action')}</li>
+                    <li onClick={() => handleGenreClick(35, "Comedy")}>{t('genres.comedy')}</li>
+                    <li onClick={() => handleGenreClick(27, "Horror")}>{t('genres.horror')}</li>
+                    <li onClick={() => handleGenreClick(10749, "Romance")}>{t('genres.romance')}</li>
+                    <li onClick={() => handleGenreClick(99, "Documentaries")}>{t('genres.documentaries')}</li>
                   </ul>
                 </div>
               )}
             </li>
-            <li className={selectedCategory === "New & Popular" ? "active" : ""} onClick={() => handleCategoryClick("New & Popular")}>New & Popular</li>
-            <li className={selectedCategory === "My List" ? "active" : ""} onClick={() => handleCategoryClick("My List")}>My List</li>
-            <li>Browse by Languages</li>
+            <li className={selectedCategory === "New & Popular" ? "active" : ""} onClick={() => handleCategoryClick("New & Popular")}>{t('header.newAndPopular')}</li>
+            <li className={selectedCategory === "My List" ? "active" : ""} onClick={() => handleCategoryClick("My List")}>{t('header.myList')}</li>
+            <li>{t('header.browseByLanguages')}</li>
           </ul>
         </div>
         <div className='header_right'>
@@ -166,14 +169,14 @@ function Header({ setSearchQuery, setSelectedCategory, setSelectedGenre, selecte
             <SearchIcon className="header__searchIcon" onClick={() => setSearchActive(!searchActive)} />
             <input
               type="text"
-              placeholder="Titles, people, genres"
+              placeholder={t('header.searchPlaceholder')}
               value={localSearchQuery}
               onChange={handleSearchChange}
               onFocus={() => setSearchActive(true)}
               onBlur={() => !localSearchQuery && setSearchActive(false)}
             />
           </div>
-          <p className="header__kids">Kids</p>
+          <p className="header__kids">{t('header.kids')}</p>
           <NotificationsIcon className="header__icon" />
           <div
             className="header__profileContainer"
@@ -203,23 +206,23 @@ function Header({ setSearchQuery, setSelectedCategory, setSelectedGenre, selecte
                   </li>
                 ))}
                 <li className="header__dropdownItem" onClick={() => handleMenuClick('Manage Profiles')}>
-                  <span>Manage Profiles</span>
+                  <span>{t('header.manageProfiles')}</span>
                 </li>
                 <li className="header__dropdownItem" onClick={() => handleMenuClick('Transfer Profile')}>
-                  <span>Transfer Profile</span>
+                  <span>{t('header.transferProfile')}</span>
                 </li>
               </ul>
               <ul className="header__dropdownSecondary">
-                <li onClick={() => handleMenuClick('Account')}>Account</li>
-                <li onClick={() => handleMenuClick('Help Center')}>Help Center</li>
-                <li onClick={handleSignOut}>Sign out of Netflix</li>
+                <li onClick={() => handleMenuClick('Account')}>{t('header.account')}</li>
+                <li onClick={() => handleMenuClick('Help Center')}>{t('header.helpCenter')}</li>
+                <li onClick={handleSignOut}>{t('header.signOut')}</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Header
