@@ -1,3 +1,7 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import LandingHeader from '../LandingHeader/LandingHeader';
+import './LandingHero.css';
 import { useLanguage } from '../../../utils/LanguageContext';
 
 const LandingHero = () => {
