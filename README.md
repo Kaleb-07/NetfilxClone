@@ -28,4 +28,4 @@ This project showcases dynamic movie lists, YouTube trailers, hover animations, 
 =======
   CSS:-Styling using tailwind 
   Movie Trailer + YouTube Trailer popups  
->>>>>>> 07921752d527a3da9d95f680d7b53a5194906ec6
+>>>>>>>
