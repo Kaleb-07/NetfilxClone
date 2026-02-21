@@ -3,6 +3,7 @@
 A Netflix-inspired movie streaming UI built using **React, Vite**, and **TMDB API**.  
 This project showcases dynamic movie lists, YouTube trailers, hover animations, and responsive layouts just like Netflix.
 
+## Deployed Address
 ## 🚀 Features
 
 ✔️ Netflix-style UI with row-based movie categories
