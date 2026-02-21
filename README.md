@@ -4,6 +4,8 @@ A Netflix-inspired movie streaming UI built using **React, Vite**, and **TMDB AP
 This project showcases dynamic movie lists, YouTube trailers, hover animations, and responsive layouts just like Netflix.
 
 ## Deployed Address
+This is cloning Address
+https://netfilx-clone-xi.vercel.app/
 ## 🚀 Features
 
 ✔️ Netflix-style UI with row-based movie categories
