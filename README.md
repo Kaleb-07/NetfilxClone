@@ -1,4 +1,4 @@
-# 🎬 Netflix Clone
+# 🎬 calix Movies Center
 
 A Netflix-inspired movie streaming UI built using **React, Vite**, and **TMDB API**.  
 This project showcases dynamic movie lists, YouTube trailers, hover animations, and responsive layouts just like Netflix.
