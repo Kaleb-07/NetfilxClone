@@ -69,8 +69,7 @@ const AccountPage = () => {
         } else if (target === "Phone") {
             updatedUser.phone = value;
         } else if (target === "Password") {
-            // In a real app, this would be a password update logic
-            // For the demo, we just show success
+            // In a real app, this would be a password update logic and For the demo, we just show success
         }
 
         localStorage.setItem('currentUser', JSON.stringify(updatedUser));
