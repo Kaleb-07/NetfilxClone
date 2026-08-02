@@ -30,7 +30,7 @@ const SignUpPage = () => {
             localStorage.setItem('registeredEmails', JSON.stringify(registeredEmails));
         }
 
-        // Store full user 
+        // Store full users
         registeredUsers[formData.email.toLowerCase()] = {
             username: formData.username,
             password: formData.password
