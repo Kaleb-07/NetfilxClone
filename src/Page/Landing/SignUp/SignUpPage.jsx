@@ -37,7 +37,7 @@ const SignUpPage = () => {
         };
         localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
 
-        // Set as current user
+        // Set as current user data
         localStorage.setItem('currentUser', JSON.stringify({
             username: formData.username,
             email: formData.email.toLowerCase()
