@@ -49,7 +49,7 @@ const ManageProfiles = () => {
             const newCurrentUser = { ...currentUser, username: editName };
             localStorage.setItem('currentUser', JSON.stringify(newCurrentUser));
 
-            // Also update registeredUsers map
+            // Also update registeredUsers map or address
             const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || {};
             registeredUsers[currentUser.email] = editName;
             localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
