@@ -14,7 +14,7 @@ const ManageProfiles = () => {
         const savedProfiles = localStorage.getItem(`profiles_${currentUser.email}`);
         if (savedProfiles) return JSON.parse(savedProfiles);
 
-        // Default profiles if none exists
+        // Default profiles if none of exists
         return [
             { id: 1, name: currentUser.username, avatar: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png", isMain: true },
             { id: 2, name: "Kids", avatar: "https://occ-0-3934-3933.1.nflxso.net/dnm/api/v6/K6ndS2WiUm2STUunY19fN-4X6ks/AAAABXy6-U9Y-nL5U0Lue9Z1PloS8W5g3_Y6Z-V7Z7-V7Z7-V7Z7-V7Z7-V7Z7-V7Z7-V7Z7.png?r=abc" },
