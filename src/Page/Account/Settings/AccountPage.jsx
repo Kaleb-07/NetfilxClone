@@ -50,7 +50,7 @@ const AccountPage = () => {
 
             openEditModal(target, currentValue);
 
-            // Clear state so it doesn't need reopen on refresh to see the
+            // Clear state so it doesn't need reopen on refresh to see the update
             window.history.replaceState({}, document.title);
         }
     }, [location.state, currentUser.email, currentUser.phone]);
