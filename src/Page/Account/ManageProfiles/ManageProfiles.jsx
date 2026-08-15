@@ -44,7 +44,7 @@ const ManageProfiles = () => {
             p.id === editingProfile.id ? { ...p, name: editName, avatar: editAvatar } : p
         );
 
-        // If Main profile name changed, update also the currentUser too
+        // If Main profile Name Changed, update also the currentUser too
         if (editingProfile.isMain) {
             const newCurrentUser = { ...currentUser, username: editName };
             localStorage.setItem('currentUser', JSON.stringify(newCurrentUser));
