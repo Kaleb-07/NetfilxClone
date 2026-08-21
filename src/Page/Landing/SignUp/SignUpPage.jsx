@@ -21,7 +21,7 @@ const SignUpPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Persist the user datas
+        // Persist the user data
         const registeredEmails = JSON.parse(localStorage.getItem('registeredEmails')) || [];
         const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || {};
 
