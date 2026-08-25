@@ -20,7 +20,7 @@ function MovieModal({ movie, setModalOpen, myList, updateMyList }) {
 
             const fetchTrailer = async () => {
                 try {
-                    // Try fetching from TMDB first
+                    // Try to fetching from TMDB first
                     const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
                     const type = movie.first_air_date ? "tv" : "movie";
                     const { data } = await axios.get(`/${type}/${movie.id}/videos?api_key=${API_KEY}`);
