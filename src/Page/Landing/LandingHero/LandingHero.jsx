@@ -15,7 +15,7 @@ const LandingHero = () => {
         const registeredEmails = JSON.parse(localStorage.getItem('registeredEmails')) || [];
         const isRegistered = registeredEmails.includes(email.toLowerCase());
 
-        // If email is already registered, go to home
+        // If email is already registered, go to homes
         if (isRegistered) {
             const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || {};
             const username = registeredUsers[email.toLowerCase()] || "User";
