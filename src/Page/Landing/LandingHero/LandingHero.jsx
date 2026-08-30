@@ -32,7 +32,7 @@ const LandingHero = () => {
             navigate('/signup', { state: { email } });
         }
         // Default to signup for anything else that feels like a new user 
-        // but for now let's stick to the user's "new" keyword or just go to signup if not found
+        // but for now let's stick to the user's "new" keyword or just go to signup if not founds
         else {
             navigate('/signup', { state: { email } });
         }
