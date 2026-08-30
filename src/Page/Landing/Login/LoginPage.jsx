@@ -24,7 +24,7 @@ const LoginPage = () => {
             }));
             navigate('/home');
         } else {
-            setError('Incorrect email or password. Please try again.');
+            setError('Incorrect email or password. Please try again again.');
         }
     };
 
