@@ -20,7 +20,7 @@ const HelpCenter = () => {
         { title: "Reset Password", path: "/account", edit: "Password" },
         { title: "Update Email", path: "/account", edit: "Email" },
         { title: "Get Help Signing In", path: "/" },
-        { title: "Update Payment Method", path: "/account", edit: "Phone" } // For demo, let's map payment help to phone/plan
+        { title: "Update Payment Method", path: "/account", edit: "Phone" } // For demo, let's map payment's help to phone/plan
     ];
 
     const filteredTrending = trendingTopics.filter(t =>
