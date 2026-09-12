@@ -40,7 +40,7 @@ const AccountPage = () => {
         });
     };
 
-    // Deep Linking Effects
+    // The Deep Linking Effects
     useEffect(() => {
         if (location.state?.edit) {
             const target = location.state.edit;
