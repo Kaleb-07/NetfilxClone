@@ -68,7 +68,7 @@ const HelpCenter = () => {
                         <SearchIcon className="search-icon-help" />
                         <input
                             type="text"
-                            placeholder="What do you need help with?"
+                            placeholder="What do you need help with Us?"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
